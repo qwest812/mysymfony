@@ -57,8 +57,7 @@ class Article{
      * @return string
      */
     public function getTitle()
-    {
-        return $this->title;
+    {        return $this->title;
     }
 
     /**

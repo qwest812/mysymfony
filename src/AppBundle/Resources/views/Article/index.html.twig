@@ -4,11 +4,12 @@
 
     <h1>Home page</h1>
 
-    <hr>{{ dump(articles) }}
-    {#{% for article in articles %}#}
-        {#<h3>{% article.id %}</h3>#}
-        {#{% article.content %}#}
-    {#{% endfor %}#}
+    <hr>
+    {#{{ dump(articles) }}#}
+    {% for article in articles %}
+        <h3>{{ article.title }}</h3>
+        <p>{{  article.content}}</p>
+    {% endfor %}
 {% endblock %}
 
 {% block stylesheets %}

@@ -30,10 +30,10 @@ class ArticleController extends Controller
 //        return new Response("<html><body>Article page:{$id}</body></html>");
 //        return $this->render('article/index.html.twig');
 
-        $repo=$this->get('doctrine')->getRepository('AppBundle:Article');
-        $articles=$repo->findAll();
-        dump($articles);
-        return ['articles'=>compact($articles)];
+      $repo=$this->get('doctrine')->getRepository('AppBundle:Article');
+      $articles=$repo->findAll();
+      dump($articles);
+       return ['articles'=>$articles];
     }
 
 
