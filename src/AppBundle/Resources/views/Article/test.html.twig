@@ -1,0 +1,21 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block body %}
+    <h1>Test page</h1>
+    {{ dump(article) }}
+    <h2>{{ article.title }}</h2>
+    {#  | raw - disable screening text
+    #}
+    <p>{{ article.content | raw }}</p>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock stylesheets%}
+
+
+{% block title %}
+    !!!!
+{% endblock title %}
