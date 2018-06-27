@@ -3,12 +3,11 @@
 {% block body %}
 
     <h1>Home page</h1>
-
     <hr>
     {#{{ dump(articles) }}#}
     {% for article in articles %}
-        <h3>{{ article.title }}</h3>
-        <p>{{  article.content}}</p>
+        <h3><a href="{{ path('article_show', {id: article.id}) }}">{{ article.title }}</a></h3>
+        <p>{{ article.content }}</p>
     {% endfor %}
 {% endblock %}
 

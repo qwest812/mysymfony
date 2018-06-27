@@ -20,7 +20,7 @@ class ArticleController extends Controller
      */
     public function indexAction()
     {
-        $name= 'Bob';
+        $name = 'Bob';
 //        return 'hello';
 //        return new Response('<html><body>hello</body></html>');
 //         replace this example code with whatever you need
@@ -30,24 +30,34 @@ class ArticleController extends Controller
 //        return new Response("<html><body>Article page:{$id}</body></html>");
 //        return $this->render('article/index.html.twig');
 
-      $repo=$this->get('doctrine')->getRepository('AppBundle:Article');
-      $articles=$repo->findAll();
-      dump($articles);
-       return ['articles'=>$articles];
+        $repo = $this->get('doctrine')->getRepository('AppBundle:Article');
+        $articles = $repo->findAll();
+//        dump($articles);
+        return ['articles' => $articles];
     }
 
 
     /**
      * single article page by id
      *
-     * @Route("/show/{id}{sl}", name="article_show", requirements={"id"="[1-9][0-9]*", "sl"="/?"})
+     * @Route("/show/{id}{sl}", name="article_show", defaults = {"sl" : ""} , requirements={"id"="[1-9][0-9]*", "sl"="/?"})
+     * @Template()
+     *
      */
     public function showAction(Request $request)
     {
-        $id= $request->get('id');
-        return $this->render('article/show.html.twig',['id_for_twig'=>$id]);
+        $id = $request->get('id');
+//        $sl=$request->get('sl');
+        dump($id);
+        $repo =$this->get('doctrine')->getRepository('AppBundle:Article');
+        $content =$repo->findOneById($id);
+//        dump($content);
+        return ['id' => $id, 'content'=>$content];
+
+//        return $this->render('article/show.html.twig',['id_for_twig'=>$id]);
 //        return new Response("<html><body>Article page:{$id}</body></html>");
     }
+
     /**
      * single article page by id
      *
@@ -55,17 +65,18 @@ class ArticleController extends Controller
      * @Route("/test", name="article_test")
      * @Template()
      */
-    public function testAction(){
+    public function testAction()
+    {
 
-        $article =new Article();
+        $article = new Article();
         $article->setTitle('Symfony start')->setContent('Some <b>text</b> bla bla');
 //        вызываем доктрину
-        $em=$this->get('doctrine')->getManager();
+        $em = $this->get('doctrine')->getManager();
 
 //        подшлтовка для сохранения
         $em->persist($article);
         $em->flush();
         dump($em);
-        return ['article'=>$article];
+        return ['article' => $article];
     }
 }
