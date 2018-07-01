@@ -156,3 +156,4 @@ class Goods
         return $this->price;
     }
 }
+

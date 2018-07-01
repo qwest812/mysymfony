@@ -32,13 +32,13 @@
                 <a href="{{ path('article_test') }}">Test</a>
             </li>
             <li>
-                <a href="show/4">Show</a>
+                <a href="{{ path('article_show', {id:'5'}) }}">Show</a>
             </li>
             <li>
-                <a href="#">Events</a>
+                <a href="{{ path('article_edit',{id:'6'}) }}">Edit</a>
             </li>
             <li>
-                <a href="#">About</a>
+                <a href="{{ path('category_add') }}">Add Category</a>
             </li>
             <li>
                 <a href="#">Services</a>
@@ -55,7 +55,12 @@
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <h1>Simple Sidebar</h1>
-            {{ app.request.attributes.get('_route')}}
+            {% for message in app.flashes('my_success') %}
+                <div style="border:  1px solid red">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ app.request.attributes.get('_route') }}
             <p>{% block body %}      {% endblock body %}</p>
             <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
         </div>

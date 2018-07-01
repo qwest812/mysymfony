@@ -1,32 +1,57 @@
 <?php
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
  * @ORM\Table(name="article")
  */
-
-class Article{
+class Article
+{
     /**
      * @ORM\Id
-     *@ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
     private $id;
     /**
      *
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     *
      */
     private $title;
     /**
      *
      * @ORM\Column(type="text")
+     *@Assert\NotBlank()
      */
+
     private $content;
 //    private $created;
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ArticleCategory")
+     */
+    private $articleCategory;
 
+    /**
+     * @return mixed
+     */
+    public function getArticleCategory()
+    {
+        return $this->articleCategory;
+    }
 
+    /**
+     * @param mixed $articleCategory
+     */
+    public function setArticleCategory($articleCategory)
+    {
+        $this->articleCategory = $articleCategory;
+    }
     /**
      * Get id
      *
@@ -57,7 +82,8 @@ class Article{
      * @return string
      */
     public function getTitle()
-    {        return $this->title;
+    {
+        return $this->title;
     }
 
     /**

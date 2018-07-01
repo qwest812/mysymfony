@@ -1,0 +1,55 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block body %}
+
+    <h1>Edit Article</h1>
+    <hr>
+
+    {#{{ form(form) }}#}
+
+
+    {{ form_start(form) }}
+    {#form widget -prin text#}
+
+    <div>
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+    <div>
+        {{ form_label(form.content) }}
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+    </div>
+    <div>
+        {{ form_label(form.articleCategory) }}
+        {{ form_errors(form.articleCategory) }}
+        {{ form_widget(form.articleCategory) }}
+    </div>
+
+
+
+    <input type="submit" value="save">
+
+
+    {{ form_end(form) }}
+
+
+
+    {#{{ dump(articles) }}#}
+    {#{% for article in articles %}#}
+        {#<h3><a href="{{ path('article_show', {id: article.id}) }}">{{ article.title }}</a></h3>#}
+        {#<p>{{ article.content }}</p>#}
+    {#{% endfor %}#}
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock stylesheets %}
+
+
+{% block title %}
+    Add article
+{% endblock title %}

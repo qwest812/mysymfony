@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findMy($id)
+    {
+        $db=$this
+            ->createQueryBuilder('a')
+            ->where('a.id < :id ')
+            ->orderBy('a.title', 'ASC')
+            ->setParameter('id', $id)
+            ->getQuery()
+        ;
+        return $db->getResult();
+    }
 }
