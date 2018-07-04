@@ -18,7 +18,7 @@ class ArticleController extends Controller
     /**
      * single article page by id
      *
-     * @Route("/", name="article_index")
+     * @Route("/start", name="article_index")
      * @Template()
      */
     public function indexAction()
@@ -60,7 +60,7 @@ class ArticleController extends Controller
             throw $this->createNotFoundException('Article not found');
         }
 //        dump($content);
-        return ['id' => $id, 'content'=>$repo];
+        return ['id' => $id, 'content'=>$content];
 
 //        return $this->render('article/show.html.twig',['id_for_twig'=>$id]);
 //        return new Response("<html><body>Article page:{$id}</body></html>");

@@ -1,0 +1,31 @@
+{% extends '@App/layout-goods.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('add_good_success') %}
+        <div style="border:  1px solid red">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<h2>Add new good</h2>
+    <div>
+        {{ form_start(newform) }}
+        {{ form_widget(newform) }}
+        <input type="submit" value="Add">
+        {{ form_end(newform) }}
+    </div>
+
+
+
+{% endblock body%}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock stylesheets%}
+
+
+{% block title %}
+    Add New Good
+{% endblock title %}

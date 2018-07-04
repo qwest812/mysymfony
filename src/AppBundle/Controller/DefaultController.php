@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/dsgsd", name="homepage")
      * @Template()
      */
     public function indexAction(Request $request)

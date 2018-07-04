@@ -24,23 +24,16 @@ class Goods
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=100)
+     * @ORM\Column(name="goods_name", type="string", length=100)
      */
-    private $name;
+    private $goodsName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="number", type="integer", nullable=true)
-     */
-    private $number;
 
     /**
      * @var int
@@ -61,27 +54,27 @@ class Goods
     }
 
     /**
-     * Set name
+     * Set goodsName
      *
-     * @param string $name
+     * @param string $goodsName
      *
      * @return Goods
      */
-    public function setName($name)
+    public function setGoodsName($goodsName)
     {
-        $this->name = $name;
+        $this->goodsName = $goodsName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get goodsName
      *
      * @return string
      */
-    public function getName()
+    public function getGoodsName()
     {
-        return $this->name;
+        return $this->goodsName;
     }
 
     /**
@@ -109,30 +102,6 @@ class Goods
     }
 
     /**
-     * Set number
-     *
-     * @param integer $number
-     *
-     * @return Goods
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
-
-        return $this;
-    }
-
-    /**
-     * Get number
-     *
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
-
-    /**
      * Set price
      *
      * @param integer $price
@@ -156,3 +125,4 @@ class Goods
         return $this->price;
     }
 }
+

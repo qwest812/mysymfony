@@ -20,28 +20,27 @@ class OrderUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var int
      *
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="amount", type="integer")
      */
-    private $idUser;
-
+    private $amount;
     /**
-     * @var \DateTime
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Goods")
      *
-     * @ORM\Column(name="date_order", type="datetime")
      */
-    private $dateOrder;
-
+    private $goods;
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_delivery", type="datetime")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
-    private $dateDelivery;
 
+
+    private $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OrderUserGroup")
+     */
+    private $order_user_group;
 
     /**
      * Get id
@@ -54,74 +53,27 @@ class OrderUser
     }
 
     /**
-     * Set idUser
+     * Set amountGoods
      *
-     * @param integer $idUser
+     * @param integer $amountGoods
      *
      * @return OrderUser
      */
-    public function setIdUser($idUser)
+    public function setAmountGoods($amountGoods)
     {
-        $this->idUser = $idUser;
+        $this->amountGoods = $amountGoods;
 
         return $this;
     }
 
     /**
-     * Get idUser
+     * Get amountGoods
      *
      * @return int
      */
-    public function getIdUser()
+    public function getAmountGoods()
     {
-        return $this->idUser;
-    }
-
-    /**
-     * Set dateOrder
-     *
-     * @param \DateTime $dateOrder
-     *
-     * @return OrderUser
-     */
-    public function setDateOrder($dateOrder)
-    {
-        $this->dateOrder = $dateOrder;
-
-        return $this;
-    }
-
-    /**
-     * Get dateOrder
-     *
-     * @return \DateTime
-     */
-    public function getDateOrder()
-    {
-        return $this->dateOrder;
-    }
-
-    /**
-     * Set dateDelivery
-     *
-     * @param \DateTime $dateDelivery
-     *
-     * @return OrderUser
-     */
-    public function setDateDelivery($dateDelivery)
-    {
-        $this->dateDelivery = $dateDelivery;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDelivery
-     *
-     * @return \DateTime
-     */
-    public function getDateDelivery()
-    {
-        return $this->dateDelivery;
+        return $this->amountGoods;
     }
 }
+
