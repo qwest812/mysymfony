@@ -1,17 +1,23 @@
 {% extends '@App/layout-goods.html.twig' %}
 
 {% block body %}
-    {#{% for goods in value %}#}
-        {#<h3><a href="{{ path('good-in', {id: value.id}) }}">{{ value.goodsName }}</a></h3>#}
-        {#<p>{{ article.content }}</p>#}
-    {#{% endfor %}#}
-{% endblock body%}
+    <ul>
+        {% for goods in goods %}
+            <li><a href="{{ path('get-good', {id:goods.id })  }}">{{ goods.goodsName }}</a>
+                {{ goods.description }}
+                {{ goods.price }}</li>
+            {#{{ goods.goodsName }}#}
+            {#<h3><a href="{{  }}">{{ goods.goodsName }}</a></h3>#}
+            {#<p>{{ article.content }}</p>#}
+        {% endfor %}
+    </ul>
+{% endblock body %}
 
 {% block stylesheets %}
-<style>
+    <style>
 
-</style>
-{% endblock stylesheets%}
+    </style>
+{% endblock stylesheets %}
 
 
 {% block title %}

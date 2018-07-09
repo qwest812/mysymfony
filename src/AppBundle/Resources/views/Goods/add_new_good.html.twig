@@ -10,8 +10,8 @@
 <h2>Add new good</h2>
     <div>
         {{ form_start(newform) }}
-        {{ form_widget(newform) }}
-        <input type="submit" value="Add">
+        {{ form_widget(newform,{'attr': {'class': 'add_good'}}) }}
+        <input type="submit" value="Add new Good" class="submit">
         {{ form_end(newform) }}
     </div>
 

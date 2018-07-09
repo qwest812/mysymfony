@@ -4,7 +4,7 @@
 
     <h1>Home page</h1>
     <hr>
-    {#{{ dump(articles) }}#}
+    {{ dump(articles) }}
     {% for article in articles %}
         <h3><a href="{{ path('article_show', {id: article.id}) }}">{{ article.title }}</a></h3>
         <p>{{ article.content }}</p>

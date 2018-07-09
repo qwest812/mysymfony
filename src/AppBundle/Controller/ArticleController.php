@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Article;
 use AppBundle\Form\ArticleType;
-use AppBundle\Services\TextExporter;
+use AppBundle\Services;
 
 
 class ArticleController extends Controller
@@ -51,12 +51,13 @@ class ArticleController extends Controller
     {
         $id = $request->get('id');
 //        $sl=$request->get('sl');
-//        dump($id);
-        $repo =$this->get('doctrine')->getRepository('AppBundle:Article')->find($id);
-        $exporter=$this->get('text_exporter');
-        $exporter->text_exporter($repo);
-//dump($dd->text_exporter($repo));
-        if(!$repo){
+        dump($id);
+        $repo =$this->get('doctrine')->getRepository('AppBundle:Article');
+        $content =$repo->findOneById($id);
+        $ff=$this->get(Servces);
+        $dd=$this->get('text_exporter');
+
+        if(!$content){
             throw $this->createNotFoundException('Article not found');
         }
 //        dump($content);

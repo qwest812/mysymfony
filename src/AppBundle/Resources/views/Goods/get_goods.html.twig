@@ -1,0 +1,39 @@
+{% extends '@App/layout-goods.html.twig' %}
+
+{% block body %}
+
+ {#{{ dump(good) }}#}
+    Id: {{ good.id }}
+    <br>
+    Name: {{ good.goodsName }}
+    <br>
+    Description: {{ good.description }}
+    <br>
+    Price: {{ good.price }}
+{##}
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+    {#{{ form_label(form) }}#}
+{##}
+    {#{{ form_errors(form) }}#}
+
+    {{ form_widget(form) }}
+    <input type="submit" value="save">
+    {{ form_end(form) }}
+    {#{{ form_help(form) }}#}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
+{% endblock body%}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock stylesheets%}
+
+
+{% block title %}
+    all goods
+{% endblock title %}
